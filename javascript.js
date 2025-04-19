@@ -14,22 +14,23 @@ function createSketchPad(size){
         }
         container.appendChild(row);
     }
+    const divs = document.querySelectorAll(".row div");
+    divs.forEach(div => {
+        const color = getRandomColor();
+        console.log(color);
+        div.addEventListener("mouseenter", ()=>{
+            changeColor(div, color);
+        });
+        div.addEventListener("mouseleave", ()=>{
+            changeColor(div, "white");
+        }
+        )
+    });
 }
 
 createSketchPad(16);
 
-const divs = document.querySelectorAll(".row div");
-divs.forEach(div => {
-    const color = getRandomColor();
-    console.log(color);
-    div.addEventListener("mouseenter", ()=>{
-        changeColor(div, color);
-    });
-    div.addEventListener("mouseleave", ()=>{
-        changeColor(div, "white");
-    }
-    )
-});
+
 
 function getRandomColor(){
     const letter = "0123456789ABCDEF";
