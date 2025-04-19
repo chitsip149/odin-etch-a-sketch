@@ -20,14 +20,25 @@ createSketchPad(16);
 
 const divs = document.querySelectorAll(".row div");
 divs.forEach(div => {
+    const color = getRandomColor();
+    console.log(color);
     div.addEventListener("mouseenter", ()=>{
-        changeColor(div, "blue");
+        changeColor(div, color);
     });
     div.addEventListener("mouseleave", ()=>{
         changeColor(div, "white");
     }
     )
 });
+
+function getRandomColor(){
+    const letter = "0123456789ABCDEF";
+    let color = "#";
+    for (let i=0; i<6; i++){
+        color+=letter[Math.floor(Math.random()*16)];
+    }
+    return color;
+}
 
 function changeColor(elem, color){
     elem.style.backgroundColor = color;
