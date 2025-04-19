@@ -1,18 +1,22 @@
 const body = document.querySelector("body");
 const container = document.querySelector(".container");
 
-for (let i = 0; i<16; i++){
-    const row = document.createElement("div");
-    row.setAttribute("class", "row");
-    for (let j=0; j<16; j++){
-        const div = document.createElement("div");
-        div.style.padding = "12px";
-        div.style.border = "2px solid black"
-        row.appendChild(div);
-
+function createSketchPad(size){
+    for (let i = 0; i<size; i++){
+        const row = document.createElement("div");
+        row.setAttribute("class", "row");
+        for (let j=0; j<size; j++){
+            const div = document.createElement("div");
+            div.style.padding = "12px";
+            div.style.border = "2px solid black"
+            row.appendChild(div);
+    
+        }
+        container.appendChild(row);
     }
-    container.appendChild(row);
 }
+
+createSketchPad(16);
 
 const divs = document.querySelectorAll(".row div");
 divs.forEach(div => {
@@ -28,6 +32,16 @@ divs.forEach(div => {
 function changeColor(elem, color){
     elem.style.backgroundColor = color;
 }
+
+const button = document.createElement("button");
+button.textContent = "Click Me!";
+body.insertBefore(button, body.firstChild);
+
+button.addEventListener("click", ()=>{
+    const input = prompt("Choose a grid size (1-100)");
+    container.innerHTML = '';
+    createSketchPad(input);
+})
 
 
 

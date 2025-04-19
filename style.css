@@ -1,12 +1,16 @@
 .container {
     display: flex;
     flex-direction: column;
+    height: 960px;
+    margin: 16px;
 }
 
 .row {
     display: flex;
+    flex: auto;
+    width: 960px;
 }
 
 .row div {
-    flex: none;
+    flex: auto;
 }
